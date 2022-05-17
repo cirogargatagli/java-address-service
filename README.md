@@ -1,2 +1,2 @@
-# java-address-service
-Microservicio de direcciones - TP Integrador Java Sobre Web - Universidad Nacional Arturo Jauretche
+# java-courses-service
+Microservicio de cursos - TP Integrador Java Sobre Web - Universidad Nacional Arturo Jauretche
