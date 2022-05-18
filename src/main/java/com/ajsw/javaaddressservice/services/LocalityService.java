@@ -2,7 +2,9 @@ package com.ajsw.javaaddressservice.services;
 
 import com.ajsw.javaaddressservice.models.dtos.LocalityDTO;
 import com.ajsw.javaaddressservice.models.entities.Locality;
+import com.ajsw.javaaddressservice.models.mappers.ListMapper;
 import com.ajsw.javaaddressservice.repositories.interfaces.ILocalityRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,17 +14,17 @@ import java.util.List;
 public class LocalityService {
 
     private ILocalityRepository iLocalityRepository;
+    private final ListMapper listMapper;
+    private final ModelMapper modelMapper;
 
-    public LocalityService(ILocalityRepository iLocalityRepository){
+    public LocalityService(ILocalityRepository iLocalityRepository, ListMapper listMapper, ModelMapper modelMapper){
         this.iLocalityRepository = iLocalityRepository;
+        this.listMapper = listMapper;
+        this.modelMapper = modelMapper;
     }
 
     public List<LocalityDTO> findAllLocalities(){
         List<Locality> localities = iLocalityRepository.findAll();
-        List<LocalityDTO> localitiesDTO = new ArrayList<>();
-        for (Locality locality : localities){
-            localitiesDTO.add(new LocalityDTO(locality.getIdLocality(), locality.getName()));
-        }
-        return localitiesDTO;
+        return listMapper.mapList(localities, LocalityDTO.class);
     }
 }
