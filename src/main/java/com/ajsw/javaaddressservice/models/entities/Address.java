@@ -19,6 +19,16 @@ public class Address {
     @JoinColumn(name = "id_locality")
     private Locality locality;
 
+    public Address(String street, String numberHouse, Locality locality) {
+        this.street = street;
+        this.numberHouse = numberHouse;
+        this.locality = locality;
+    }
+
+    public Address() {
+
+    }
+
     public int getIdAddress() {
         return idAddress;
     }
