@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -18,13 +19,22 @@ public class Course {
     private int idCourse;
     @Basic
     @Column(name = "start_time")
-    private Date startTime;
+    private Timestamp startTime;
     @Basic
     @Column(name = "end_time")
-    private Date endTime;
+    private Timestamp endTime;
     @Basic
     @Column(name = "price")
     private BigInteger price;
+    @Basic
+    @Column(name = "tittle")
+    private String tittle;
+    @Basic
+    @Column(name = "description")
+    private String description;
+    @Basic
+    @Column(name = "imageURL")
+    private String imageURL;
 
     @ManyToOne
     @JoinColumn(
@@ -68,19 +78,19 @@ public class Course {
         this.idCourse = idCourse;
     }
 
-    public Date getStartTime() {
+    public Timestamp getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Timestamp getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 
@@ -91,6 +101,18 @@ public class Course {
     public void setPrice(BigInteger price) {
         this.price = price;
     }
+
+    public String getTittle() { return tittle; }
+
+    public void setTittle(String tittle) { this.tittle = tittle; }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public String getImageURL() { return imageURL; }
+
+    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
 
     public Instructor getInstructor() {
         return instructor;
